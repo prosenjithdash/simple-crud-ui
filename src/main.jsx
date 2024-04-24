@@ -1,3 +1,5 @@
+// Read data step - 01 create users.jsx file
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
@@ -7,12 +9,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Users from './Components/Users.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
   },
+
+  // Read data step - 02 create users route
+  {
+    path: '/users',
+    element: <Users />,
+    loader: () => fetch('http://localhost:2000/users')
+  }
 ]);
 
 
