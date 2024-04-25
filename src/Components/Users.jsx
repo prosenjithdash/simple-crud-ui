@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 // Read data step - 04 show display from database data (ui side)
 const Users = () => {
@@ -31,10 +31,17 @@ const Users = () => {
     return (
         <div>
             <h2>{users.length}</h2>
+            
+            {/* Update data step - 01 */}
+            {/* // Update data step - 02 (update.jsx ui side) */}
             {/* Delete data step -1 */}
             <div>
                 {
-                    users.map(user => <p key={user._id}>{user.name} : {user.email} <button onClick={()=>handleDelete(user._id)}>X</button></p>)
+                    users.map(user => <p key={user._id}>{user.name} : {user.email}
+                        <Link to={`/update/${user._id}`}>
+                            <button>Update</button>
+                        </Link>
+                        <button onClick={() => handleDelete(user._id)}>X</button></p>)
                 }
             </div>
         </div>
